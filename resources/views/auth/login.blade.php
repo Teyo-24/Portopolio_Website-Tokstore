@@ -1,95 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- saved from url=(0051)https://getbootstrap.com/docs/5.3/examples/sign-in/ -->
+<html lang="en" data-bs-theme="white">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="./login.blade_files/color-modes.js.download"></script>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Signin Template · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
+
+
+
+    <link rel="stylesheet" href="./login.blade_files/css@3">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png"
+        sizes="180x180">
+    <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32"
+        type="image/png">
+    <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16"
+        type="image/png">
+    <link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
+        color="#712cf9">
+    <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/sign-in.css') }}" rel="stylesheet">
 </head>
 
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Tok</b>Store</a>
-            </div>
-            <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+<body class="text-center">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <main class="form-signin w-100">
+            <form class="shadow p-3 mb-5 bg-body rounded">
+                <img class="mb-4" src="{{ asset('images/bootstrap-logo.svg') }}" alt="" width="72"
+                    height="57">
+                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-                <form action="../../index3.html" method="post">
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-
-                <div class="social-auth-links text-center mt-2 mb-3">
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                    </a>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
                 </div>
-                <!-- /.social-auth-links -->
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
 
-                <p class="mb-1">
-                    <a href="forgot-password.html">I forgot my password</a>
-                </p>
-                <p class="mb-0">
-                    <a href="register.html" class="text-center">Register a new membership</a>
-                </p>
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
+                <div class="form-check mb-3">
+                    <label>
+                        <input class="form-check-input" type="checkbox" value="remember-me"
+                            id="flexCheckDefault">Remember
+                        me
+                    </label>
+                </div>
+                <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
+                <p class="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
+            </form>
+        </main>
     </div>
-    <!-- /.login-box -->
+    <script src="./login.blade_files/bootstrap.bundle.min.js.download"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
-    <!-- jQuery -->
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

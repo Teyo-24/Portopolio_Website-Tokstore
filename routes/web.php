@@ -24,9 +24,9 @@ Route::get('/landing', function () {
     return view('landing');
 });
 
-// Route::get('/produk-tes', function () {
-//     return view('produk');
-// });
+Route::get('/produk-tes', function () {
+    return view('produk');
+});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
@@ -34,6 +34,10 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
+
+// Route::get('/test', function () {
+//     return view('layouts.backend.app');
+// });
 
 Route::resource('/kategori', KategoriController::class)->names('kategori');
 Route::resource('/produk', ProdukController::class)->names('produk');
