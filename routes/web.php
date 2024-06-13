@@ -37,7 +37,7 @@ Route::get('/landing', function () {
 //     return view('produk');
 // });
 
-Route::get('landing-page', [LandingController::class, 'index']);
+Route::get('/', [LandingController::class, 'index']);
 // Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
