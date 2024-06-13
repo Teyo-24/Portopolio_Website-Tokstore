@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
@@ -34,30 +35,30 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'gambar',
-            'kategori_id',
-            'nama',
-            'harga',
-            'deskripsi'
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'kategori_id' => 'required',
+            'nama' => 'required|string|max:255',
+            'harga' => 'required|numeric',
+            'deskripsi' => 'nullable|string',
         ]);
-        $imagepath = $request->file('gambar')->store('public/produk');
 
-        $produk = new Produk();
-        $produk->gambar = $imagepath;
-        $produk->kategori_id = $request->kategori_id;
-        $produk->nama = $request->nama;
-        $produk->harga = $request->harga;
-        $produk->deskripsi = $request->deskripsi;
-        $produk->save();
+        $imagePath = $request->file('gambar')->store('products', 'public');
 
-        return redirect()->route('produk.index');
+        $product = new Produk();
+        $product->gambar = $imagePath;
+        $product->kategori_id = $request->kategori_id;
+        $product->nama = $request->nama;
+        $product->harga = $request->harga;
+        $product->deskripsi = $request->deskripsi;
+        $product->save();
 
+        return redirect()->route('produk.index')->with('success', 'Product created successfully.');
     }
-
 
     /**
      * Display the specified resource.
      */
+
     public function show(string $id)
     {
         //
@@ -68,7 +69,9 @@ class ProdukController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $produk = Produk::findOrFail($id);
+        $kategori = Kategori::all();
+        return view('admin.produk.edit', compact('produk', 'kategori'));
     }
 
     /**
@@ -76,7 +79,32 @@ class ProdukController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Produk::findOrFail($id);
+
+        $request->validate([
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'kategori_id' => 'required',
+            'nama' => 'required|string|max:255',
+            'harga' => 'required|numeric',
+            'deskripsi' => 'nullable|string',
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            // Delete old image
+            Storage::disk('public')->delete($product->gambar);
+
+            // Store new image
+            $imagePath = $request->file('gambar')->store('products', 'public');
+            $product->gambar = $imagePath;
+        }
+
+        $product->kategori_id = $request->kategori_id;
+        $product->nama = $request->nama;
+        $product->harga = $request->harga;
+        $product->deskripsi = $request->deskripsi;
+        $product->save();
+
+        return redirect()->route('produk.index')->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -84,9 +112,13 @@ class ProdukController extends Controller
      */
     public function destroy(string $id)
     {
-        $produk = Produk::findOrFail($id);
-        $produk->delete();
+        $product = Produk::findOrFail($id);
 
-        return redirect()->route('produk.index')->with('Berhasil hapus produk');
+        // Delete image
+        Storage::disk('public')->delete($product->gambar);
+
+        $product->delete();
+
+        return redirect()->route('produk.index')->with('success', 'Product deleted successfully.');
     }
 }

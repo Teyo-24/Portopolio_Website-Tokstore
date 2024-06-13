@@ -9,8 +9,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Earnings (Monthly)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                Produk (Monthly)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">5 Produk</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -27,8 +27,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Earnings (Annual)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                Kategori</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">1 Kategori</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="row">
+    {{-- <div class="row">
 
         <div class="col-xl-8 col-lg-7">
             <!-- Area Chart -->
@@ -100,10 +100,10 @@
                     <hr>
                     Styling for the area chart can be found in the
                     {{-- <code>/js/demo/chart-area-demo.js</code> file. --}}
-                </div>
-            </div>
-        </div>
     </div>
+    </div>
+    </div>
+    </div> --}}
 
     <!-- /.content -->
 @endsection

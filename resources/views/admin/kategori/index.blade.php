@@ -18,7 +18,6 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h3 class="card-title">DataTable with default features</h3>
                             <div class="ml-auto">
                                 <a href="{{ route('kategori.create') }}"><button type="button"
                                         class="btn btn-primary">Tambah

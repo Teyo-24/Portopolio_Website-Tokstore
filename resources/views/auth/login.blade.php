@@ -121,18 +121,19 @@
 <body class="text-center">
     <div class="d-flex justify-content-center align-items-center vh-100">
         <main class="form-signin w-100">
-            <form class="shadow p-3 mb-5 bg-body rounded">
-                <img class="mb-4" src="{{ asset('images/bootstrap-logo.svg') }}" alt="" width="72"
-                    height="57">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
+            <h5>TokStore</h5>
+            {{-- <img class="mb-4" src="{{ asset('images/bootstrap-logo.svg') }}" alt="" width="72"
+                height="57"> --}}
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <form method="POST" action="{{ url('/proses-login') }}" class="shadow p-3 mb-5 bg-body rounded">
+                @csrf
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                    <label for="password" autofacus required>Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                    <label for="password" required>Password</label>
                 </div>
 
                 <div class="form-check mb-3">

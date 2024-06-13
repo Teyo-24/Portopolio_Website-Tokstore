@@ -21,6 +21,14 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('template/backend/sb-admin-2') }}/css/sb-admin-2.min.css" rel="stylesheet">
     @stack('css')
+    {{-- CKEditor CDN --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+    <style>
+        .ck-editor__editable {
+            min-height: 300px;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -111,7 +119,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ url('/logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-primary">Logout</button>
                     </form>
@@ -120,6 +128,13 @@
         </div>
     </div>
 
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('template/backend/sb-admin-2') }}/vendor/jquery/jquery.min.js"></script>
     <script src="{{ asset('template/backend/sb-admin-2') }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -146,13 +161,6 @@
     @stack('js')
     <!-- ChartJS -->
     <script src="{{ asset('assets/plugins/chart.js/Chart.min.js') }}"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
 </body>
 
 </html>

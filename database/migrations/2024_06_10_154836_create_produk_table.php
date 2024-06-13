@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('gambar');
             $table->unsignedBigInteger('kategori_id');
             $table->string('nama');
-            $table->decimal('harga', 8, 2);
+            $table->decimal('harga', 19, 3);
             $table->text('deskripsi');
             $table->timestamps();
 
